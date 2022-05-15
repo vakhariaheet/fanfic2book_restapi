@@ -1,6 +1,8 @@
-module.exports = () => {
+import dotenv from 'dotenv';
+dotenv.config();
+export default () => {
 	const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
-	const options = {
+	const options: any = {
 		client_id: process.env.GOOGLE_CLIENT_ID,
 		redirect_uri: process.env.GOOGLE_REDIRECT_URI,
 		response_type: 'code',
@@ -11,7 +13,10 @@ module.exports = () => {
 		access_type: 'offline',
 		prompt: 'consent',
 	};
-	const qs = new URLSearchParams(options);
+	const qs = Object.keys(options)
+		.map((key) => key + '=' + options[key])
+		.join('&');
+
 	const url = `${rootUrl}?${qs}`;
 	return url;
 };
