@@ -7,7 +7,7 @@ import cookieSession from 'cookie-session';
 import { uid } from 'uid';
 import dotenv from 'dotenv';
 import GoogleOAuth from 'passport-google-oauth20';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 // Utils
 import { encrypt } from './utils/Encryption';
 import VerfiyToken from './utils/VerfiyToken';
